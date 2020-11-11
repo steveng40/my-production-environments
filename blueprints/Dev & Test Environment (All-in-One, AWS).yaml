@@ -8,6 +8,7 @@ metadata:
 
 clouds:
   - AWS: eu-west-1
+  - Azure 4: westeurope #added azure cloud provider
 
 # These are the blueprint parameters and their default values.
 # The values can be changed when creating a sandbox based on this
