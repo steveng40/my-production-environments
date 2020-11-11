@@ -6,7 +6,7 @@ metadata:
   description: LAMP WordPress stack (Linux, Apache, MySQL, PHP)
 
 clouds:
-  - azure: westeurope
+  - Azure 4: westeurope # originally: azure: westeurope
 
 # These are the blueprint parameters and their default values.
 # The values can be changed when creating a sandbox based on this
