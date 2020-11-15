@@ -9,7 +9,7 @@ inputs:
   - SANDBOX_ID
 
 module:
-  source: github.com/cloudshell-colony/terraform/azure-mysql
+  source: https://github.com/steveng40/colony-blueprints/tree/main/services/azure-mysql
   # The source element is the location of your Terraform module,
   # Both public and private repos are supported
 
