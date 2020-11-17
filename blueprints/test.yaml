@@ -1,6 +1,0 @@
----
-spec_version: 1
-kind: blueprint ####
-
-metadata:
-  description: LAMP WordPress stack (Linux, Apache, MySQL, PHP)
