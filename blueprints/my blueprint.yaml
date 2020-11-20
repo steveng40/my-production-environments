@@ -4,9 +4,11 @@ kind: blueprint
 
 metadata:
   description:
-    Java application with a managed Azure database deployed with TerraForm.
+    My test blueprint, based on a sample.
+    tags:
+      created_for: training
 clouds:
-  - azure: westeurope
+  - azure 4: westeurope
 
 # These are the blueprint parameters and their default values.
 # The values can be changed when creating a sandbox based on this
