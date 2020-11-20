@@ -3,7 +3,7 @@ spec_version: 1
 kind: blueprint
 
 metadata:
-  description: >
+  description:
     Java application with a managed Azure database deployed with TerraForm.
 clouds:
   - azure: westeurope
