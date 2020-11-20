@@ -32,7 +32,7 @@ applications:
   - java-spring-website:
       instances: 1
       input_values:
-        - DB_HOSTNAME: $outputs.azure-mysql.server_name
+        - DB_HOSTNAME: $colony.applications.azure-mysql.server_name
         - DB_USER: $colony.applications.azure-mysql.outputs.output_name
         - USE_SSL: true
         - DB_PASS: $DB_PASS
