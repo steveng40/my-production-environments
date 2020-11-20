@@ -33,7 +33,7 @@ applications:
       instances: 1
       input_values:
         - DB_HOSTNAME: $outputs.azure-mysql.server_name
-        - DB_USER: $outputs.azure-mysql.server_admin_login_name
+        - DB_USER: $colony.applications.azure-mysql.outputs.output_name
         - USE_SSL: true
         - DB_PASS: $DB_PASS
         - DB_NAME: $DB_NAME
@@ -49,7 +49,7 @@ services:
         - DB_NAME: $DB_NAME
         - DB_USER: $DB_USER
         - DB_PASS: $DB_PASS
-        - SANDBOX_ID: $COLONY.SandboxId
+        - SANDBOX_ID: $COLONY.environment.id
         - MANAGED_IDENTITY: $MANAGED_IDENTITY
 debugging:
   availability: enabled-on
