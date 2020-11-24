@@ -42,7 +42,7 @@ applications:
       depends_on:
         - azure-mysql
 services:
-  # Instance of azure database mysql
+  # Instance of azure database mysql 
   # (see: services/azure-mysql/azure-mysql.yaml)
   - azure-mysql:
       input_values:
