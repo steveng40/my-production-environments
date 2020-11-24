@@ -4,11 +4,9 @@ kind: blueprint
 
 metadata:
   description:
-    My test blueprint, based on a sample.
-    tags:
-      created_for: training
+    Java application with a managed Azure database deployed with TerraForm.
 clouds:
-  - azure 4: westeurope
+  - azure: westeurope
 
 # These are the blueprint parameters and their default values.
 # The values can be changed when creating a sandbox based on this
@@ -17,7 +15,7 @@ inputs:
   - DB_USER: colony  # Used to define the db admin account
   - DB_PASS:
       display_style: masked
-      description:
+      description: >
         Database server password must contain from 8 to 128 characters.
         Your password must contain characters from
         three of the following categories:
@@ -34,8 +32,8 @@ applications:
   - java-spring-website:
       instances: 1
       input_values:
-        - DB_HOSTNAME: $outputs.azure-mysql.server_name
-        - DB_USER: $outputs.azure-mysql.server_admin_login_name
+        - DB_HOSTNAME: $colony.applications.azure-mysql.server_name
+        - DB_USER: $colony.applications.azure-mysql.outputs.output_name
         - USE_SSL: true
         - DB_PASS: $DB_PASS
         - DB_NAME: $DB_NAME
@@ -51,7 +49,7 @@ services:
         - DB_NAME: $DB_NAME
         - DB_USER: $DB_USER
         - DB_PASS: $DB_PASS
-        - SANDBOX_ID: $COLONY.SandboxId
+        - SANDBOX_ID: $COLONY.environment.id
         - MANAGED_IDENTITY: $MANAGED_IDENTITY
 debugging:
   availability: enabled-on
