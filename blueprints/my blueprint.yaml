@@ -32,7 +32,7 @@ applications:
   - java-spring-website:
       instances: 1
       input_values:
-        - DB_HOSTNAME: $outputs.rds-mysql-aurora-cluster.hostname
+        - DB_HOSTNAME: $outputs.rds-mysql.hostname
         - DB_USER: $colony.applications.azure-mysql.outputs.output_name
         - USE_SSL: true
         - DB_PASS: $DB_PASS
@@ -49,7 +49,7 @@ services:
         - DB_NAME: $DB_NAME
         - DB_USER: $DB_USER
         - DB_PASS: $DB_PASS
-        - SANDBOX_ID: $COLONY.environment.id
+        - SANDBOX_ID: $COLONY.SandboxId
         - MANAGED_IDENTITY: $MANAGED_IDENTITY
 # Bastion default setting
 # Bastion will deploy and then power off to cut costs.
