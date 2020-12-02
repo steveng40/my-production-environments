@@ -12,7 +12,8 @@ clouds:
 # The values can be changed when creating a sandbox based on this
 # blueprint.
 inputs:
-  - DB_USER: colony  # Used to define the db admin account
+  - DB_HOSTNAME: $outputs.azure-mysql.server_name
+  - DB_USER: $outputs.azure-mysql.server_admin_login_name
   - DB_PASS:
       display_style: masked
       description: >
@@ -49,7 +50,7 @@ services:
         - DB_NAME: $DB_NAME
         - DB_USER: $DB_USER
         - DB_PASS: $DB_PASS
-        - SANDBOX_ID: $COLONY.environment.id
+        - SANDBOX_ID: $COLONY.SandboxId
         - MANAGED_IDENTITY: $MANAGED_IDENTITY
 debugging:
   availability: enabled-on
