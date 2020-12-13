@@ -30,7 +30,7 @@ applications:
         - DB_NAME: $DB_NAME
   # One instance of java-spring-website
   # (see: applications/java-spring-website/java-spring-website.yaml)
-  - java-spring-website-2:
+  - java-spring-website:
       target: all-in-one
       input_values:
         - DB_USER: $DB_USER
@@ -44,8 +44,6 @@ applications:
 ingress: 
   listeners: 
     - http: 8080
-      redirect_to_listener: 443 
-    - https: 443 
       rules: 
       - path: /cli/* 
         application: java-spring-website-2
