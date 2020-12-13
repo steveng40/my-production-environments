@@ -48,7 +48,7 @@ applications:
 artifacts:
 - nectar-api: 'nectar/nectar-api.py'
 
- ingress:
+ingress:
   listeners:
     - http: 80
       rules:
