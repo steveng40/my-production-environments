@@ -40,10 +40,3 @@ applications:
       # the database is ready
       depends_on:
         - mysql
-ingress: 
-  listeners: 
-    - http: 8080
-      rules: 
-      - path: /cli/* 
-        application: java-spring-website-2
-        shortcut: my-colony.java-sprintg-website/cli
