@@ -57,6 +57,7 @@ ingress:
         port: 3001
         shortcut: ${COLONY.PublicAddress}/api/index
     - default: true
-      application: java-spring-website
-      port: 8080
-      shortcut: $COLONY.PublicAddress
+      rules:
+        application: java-spring-website
+        port: 8080
+        shortcut: $COLONY.PublicAddress
