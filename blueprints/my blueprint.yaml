@@ -43,8 +43,6 @@ applications:
 ingress: 
   listeners: 
     - http: 8080
-      redirect_to_listener: 443 
-    - https: 443 
       rules: 
       - path: /cli/* 
         application: java-spring-website-2
