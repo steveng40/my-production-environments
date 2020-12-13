@@ -34,21 +34,21 @@ applications:
         - DB_NAME: $DB_NAME
   # One instance of java-spring-website
   # (see: applications/java-spring-website/java-spring-website.yaml)
-- java-spring-website:
-    target: all-in-one
-    input_values:
-      - DB_USER: $DB_USER
-      - DB_PASS: $DB_PASS
-      - DB_NAME: $DB_NAME
-    # The website depends on MySQL and will start deploying only when
-    # the database is ready
-    depends_on:
-      - mysql
+  - java-spring-website:
+      target: all-in-one
+      input_values:
+        - DB_USER: $DB_USER
+        - DB_PASS: $DB_PASS
+        - DB_NAME: $DB_NAME
+      # The website depends on MySQL and will start deploying only when
+      # the database is ready
+      depends_on:
+        - mysql
 
 artifacts:
 - nectar-api: 'nectar/nectar-api.py'
 
-ingress:
+ ingress:
   listeners:
     - http: 80
       rules:
@@ -57,7 +57,6 @@ ingress:
         port: 3001
         shortcut: ${COLONY.PublicAddress}/api/index
     - default: true
-      rules:
-        application: java-spring-website
-        port: 8080
-        shortcut: $COLONY.PublicAddress
+      application: java-spring-website
+      port: 8080
+      shortcut: $COLONY.PublicAddress
