@@ -6,7 +6,7 @@ metadata:
   description: >
     A simple multi-tier application deployed on a single Azure VM.
 clouds:
-  - azure: westeurope
+  - azure 4: westeurope
 
 # These are the blueprint parameters and their default values.
 # The values can be changed when creating a sandbox based on this
@@ -30,7 +30,7 @@ applications:
         - DB_NAME: $DB_NAME
   # One instance of java-spring-website
   # (see: applications/java-spring-website/java-spring-website.yaml)
-  - java-spring-website:
+  - java-spring-website-2:
       target: all-in-one
       input_values:
         - DB_USER: $DB_USER
