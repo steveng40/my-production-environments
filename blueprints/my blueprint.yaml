@@ -44,6 +44,9 @@ applications:
       # the database is ready
       depends_on:
         - mysql
+        
+artifacts:
+- nectar-api: 'nectar/nectar-api.py'
 
 ingress:
   listeners:
