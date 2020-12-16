@@ -23,7 +23,6 @@ inputs:
 # These are the applications that will be deployed in this blueprint
 applications:
 - nectar-api:
-    target: all-in-one
     input_values:
       - BUILD_NUM: 1.2.3
 - mysql:  # One instance of mysql (see: applications/mysql/mysql.yaml)
