@@ -45,7 +45,7 @@ applications:
       - mysql
 
 artifacts:
-- nectar-api: 'nectar/nectar-api.py'
+- nectar-api: 'artifacts/nectar/nectar-api.py'
 
 ingress:
   listeners:
