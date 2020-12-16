@@ -31,7 +31,7 @@ infrastructure:
         vm_size: Basic_A2
 
   connectivity:
-    external:
+    internal:
       - port_info:
           # Port 8080 will be opened externally to receive web requests
           port: 8080
