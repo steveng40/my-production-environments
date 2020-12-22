@@ -22,9 +22,6 @@ inputs:
 
 # These are the applications that will be deployed in this blueprint
 applications:
-- nectar-api:
-    input_values:
-      - BUILD_NUM: 1.2.3
 - mysql:  # One instance of mysql (see: applications/mysql/mysql.yaml)
     target: all-in-one
     input_values:
@@ -51,11 +48,7 @@ ingress:
   listeners:
     - http: 80
       rules:
-      - path: /api/*
-        application: nectar-api
-        port: 3001
-        shortcut: ${COLONY.PublicAddress}/api/index
       - default: true
         application: java-spring-website
         port: 8080
-        shortcut: $COLONY.PublicAddress
+        shortcut: $COLONY.PublicAddress - public
