@@ -41,9 +41,6 @@ applications:
     depends_on:
       - mysql
 
-artifacts:
-- nectar-api: 'artifacts/nectar/nectar-api.py'
-
 ingress:
   listeners:
     - http: 80
@@ -51,4 +48,4 @@ ingress:
       - default: true
         application: java-spring-website
         port: 8080
-        shortcut: $COLONY.PublicAddress - public
+        shortcut: $COLONY.PublicAddress
