@@ -43,4 +43,16 @@ infrastructure:
             timeout: 5
             unhealthy-threshold: 2
             
-
+debugging:
+  connection_protocol: SSH
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
