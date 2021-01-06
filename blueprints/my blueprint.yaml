@@ -44,4 +44,16 @@ applications:
     # The website depends on MySQL and will start deploying only when
     # the database is ready
     depends_on:
-      - mysql
+      - azure-mysql
+services:
+  # Instance of azure database mysql
+  # (see: services/azure-mysql/azure-mysql.yaml)
+  - azure-mysql:
+      input_values:
+        - DB_NAME: $DB_NAME
+        - DB_USER: $DB_USER
+        - DB_PASS: $DB_PASS
+        - SANDBOX_ID: $COLONY.environment.id
+        - MANAGED_IDENTITY: $MANAGED_IDENTITY
+debugging:
+  availability: enabled-on
