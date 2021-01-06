@@ -5,6 +5,7 @@ kind: blueprint
 metadata:
   description: >
     Java application with a managed Azure database deployed with Terraform.
+
 clouds:
   - azure: westeurope
 
@@ -27,16 +28,9 @@ inputs:
 
 # These are the applications that will be deployed in this blueprint
 applications:
-- mysql:  # One instance of mysql (see: applications/mysql/mysql.yaml)
-    target: all-in-one
-    input_values:
-      - DB_USER: $DB_USER  # Assign values from the app inputs
-      - DB_PASS: $DB_PASS
-      - DB_NAME: $DB_NAME
   # One instance of java-spring-website
   # (see: applications/java-spring-website/java-spring-website.yaml)
 - java-spring-website:
-    target: all-in-one
     input_values:
       - DB_USER: $DB_USER
       - DB_PASS: $DB_PASS
@@ -45,6 +39,7 @@ applications:
     # the database is ready
     depends_on:
       - azure-mysql
+
 services:
   # Instance of azure database mysql
   # (see: services/azure-mysql/azure-mysql.yaml)
@@ -55,5 +50,6 @@ services:
         - DB_PASS: $DB_PASS
         - SANDBOX_ID: $COLONY.environment.id
         - MANAGED_IDENTITY: $MANAGED_IDENTITY
+
 debugging:
   bastion-availability: enabled-on
