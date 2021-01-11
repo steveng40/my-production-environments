@@ -61,4 +61,4 @@ ingress:
         shortcut: $COLONY.PublicAddress
 
 debugging:
-  bastion-availability: enabled-on
+  bastion_availability: enabled-on
