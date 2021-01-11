@@ -57,11 +57,22 @@ services:
         - DB_NAME: $DB_NAME
         - DB_USER: $DB_USER
         - DB_PASS: $DB_PASS
-        - SANDBOX_ID: $COLONY.environment.id
-        - MANAGED_IDENTITY: $MANAGED_IDENTITY
 
 artifacts:
 - java-spring-website: ‘artifacts/java-spring-website-artifacts-1.1.0.py’
 
+ingress:
+  listeners:
+    - http: 80
+      rules:
+      - path: /api/*
+        application: nectar-api
+        port: 3001
+        shortcut: ${COLONY.PublicAddress}/api/index
+      - default: true
+        application: java-spring-website
+        port: 8080
+        shortcut: $COLONY.PublicAddress
+        
 debugging:
   bastion_availability: enabled-on
