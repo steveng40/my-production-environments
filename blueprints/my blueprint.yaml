@@ -4,10 +4,10 @@ kind: blueprint
 
 metadata:
   description: >
-    Java application with a managed Azure database deployed with Terraform.
+    My blueprint, based on a sample.
 
 clouds:
-  - azure: westeurope
+  - azure 4: westeurope
 
 # These are the blueprint parameters and their default values.
 # The values can be changed when creating a sandbox based on this
@@ -23,6 +23,11 @@ inputs:
       English upercase letters, English lowercase letters, numbers (0-9),
       and non-alphanumeric characters (!, $, #, %, and so on)
       default_value: sv4YPTPs7fN&
+      optional: true
+  
+  - SANDBOX_ID: $colony.environment.id
+  - VNET_ID: $colony.environment.virtual_network_id
+  
   # Used to define the db admin password
   - DB_NAME: demo_db  # DB_NAME - a target database name
 
@@ -31,7 +36,11 @@ applications:
   # One instance of java-spring-website
   # (see: applications/java-spring-website/java-spring-website.yaml)
 - java-spring-website:
+    instances: 3
+    alias: my test client app
     input_values:
+      - DB_HOSTNAME: $colony.applications.azure-mysql.outputs.server_name
+      - DB_HOSTNAME: $colony.applications.azure-mysql.outputs.output_name
       - DB_USER: $DB_USER
       - DB_PASS: $DB_PASS
       - DB_NAME: $DB_NAME
@@ -51,5 +60,8 @@ services:
         - SANDBOX_ID: $COLONY.environment.id
         - MANAGED_IDENTITY: $MANAGED_IDENTITY
 
+artifacts:
+- java-spring-website: ‘artifacts/java-spring-website-artifacts-1.1.0.py’
+
 debugging:
-  bastion-availability: enabled-on
+  bastion_availability: enabled-on
