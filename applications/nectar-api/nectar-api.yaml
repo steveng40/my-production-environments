@@ -1,6 +1,16 @@
 kind: application
 spec_version: 1
 
+source:
+  image:
+    ami:
+    - id: ami-00b36349b3dba2ec3
+      region: eu-west-1
+      username: ubuntu
+    azure_image:
+    - urn: Canonical:UbuntuServer:16.04-LTS:latest
+  os_type: linux
+
 inputs:
 - INSTANCETYPE: t3.small,t3.medium,c5.large,m5.large,m4.large
 - AZURE_VM_SIZE: Basic_A1
@@ -15,16 +25,7 @@ configuration:
   start:
     script: start.sh
     
-source:
-  image:
-    ami:
-    - id: ami-00b36349b3dba2ec3
-      region: eu-west-1
-      username: ubuntu
-    azure_image:
-    - urn: Canonical:UbuntuServer:16.04-LTS:latest
-  os_type: linux
-  
+
 infrastructure:
   compute:
     spec:
