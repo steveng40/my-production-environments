@@ -25,7 +25,6 @@ configuration:
   start:
     script: start.sh
     
-
 infrastructure:
   compute:
     spec:
