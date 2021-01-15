@@ -46,15 +46,5 @@ infrastructure:
             
 debugging:
   connection_protocol: SSH
-  #allow_direct_access: true
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
+
+
