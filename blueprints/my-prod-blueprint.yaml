@@ -21,7 +21,7 @@ artifacts:
 inputs:
 - BUILD_NUM
 - NETWORK_ID
-- CERT_ID
+# - CERT_ID
 
 ingress:
   listeners:
