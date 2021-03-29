@@ -26,7 +26,7 @@ inputs:
 ingress:
   listeners:
     - https: 443
-      certificate: $CERT_ID
+#       certificate: $CERT_ID
       rules:
       # Green rules:
       # Note that every green rule should contain 'host: green.asaf.com' property
