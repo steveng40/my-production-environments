@@ -51,14 +51,14 @@ infrastructure:
   connectivity:
     green_host: green.pm.com
     virtual_network:
-       id: infra_rg/prod_vnet
-       subnets:
-         gateway:
-          - ag_subnet
-         management:
-          - mng_subnet
-         application:
-           - app_subnet
+      id: infra_rg/prod_vnet
+      subnets:
+        gateway:
+        - ag_subnet
+        management:
+        - mng_subnet
+        application:
+        - app_subnet
 
 ingress:
   listeners:
