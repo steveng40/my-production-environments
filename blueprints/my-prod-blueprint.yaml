@@ -25,7 +25,7 @@ inputs:
 
 ingress:
   listeners:
-    - https: 443
+#     - https: 443
 #       certificate: $CERT_ID
       rules:
       # Green rules:
