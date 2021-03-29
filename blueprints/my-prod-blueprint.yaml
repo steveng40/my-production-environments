@@ -67,7 +67,6 @@ ingress:
       - path: /api/*
         application: nectar-api
         port: 3001
-        color: blue
         shortcut: ${COLONY.PublicAddress}/api/index
       - path: /api/*
         application: nectar-api
