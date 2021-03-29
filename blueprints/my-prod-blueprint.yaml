@@ -65,8 +65,14 @@ ingress:
     - http: 80
       rules:
       - path: /api/*
+        application: nectar-api-green
+        port: 3001
+        color: blue
+        shortcut: ${COLONY.PublicAddress}/api/index
+      - path: /api/*
         application: nectar-api
         port: 3001
+        color: green
         shortcut: ${COLONY.PublicAddress}/api/index
       - default: true
         application: java-spring-website
