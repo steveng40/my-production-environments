@@ -21,12 +21,12 @@ artifacts:
 inputs:
 - BUILD_NUM
 - NETWORK_ID
-# - CERT_ID
+- CERT_ID
 
 ingress:
   listeners:
-#     - https: 443
-#       certificate: $CERT_ID
+    - https: 443
+      certificate: $CERT_ID
       rules:
       # Green rules:
       # Note that every green rule should contain 'host: green.asaf.com' property
