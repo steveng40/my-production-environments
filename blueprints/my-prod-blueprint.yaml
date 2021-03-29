@@ -1,68 +1,32 @@
----
-spec_version: 1
 kind: blueprint
+spec_version: 1
 
-metadata:
-  description: >
-    A simple multi-tier application deployed on a single Azure VM.
 clouds:
-  - azure: westeurope
+- azure: westeurope
 
-# These are the blueprint parameters and their default values.
-# The values can be changed when creating a sandbox based on this
-# blueprint.
-inputs:
-  - DB_USER: root  # Used to define the db admin account
-  - DB_PASS:
-      display_style: masked
-      description: please set the root database password
-      default_value: 12345
-  # Used to define the db admin password
-  - DB_NAME: demo_db  # DB_NAME - a target database name
-
-# These are the applications that will be deployed in this blueprint
 applications:
+- nectar-web:
+    target: nectar
+    input_values:
+    - BUILD_NUM: $BUILD_NUM
 - nectar-api:
+    target: nectar
     input_values:
-      - BUILD_NUM: 1.2.3
-- mysql:  # One instance of mysql (see: applications/mysql/mysql.yaml)
-    target: all-in-one
-    input_values:
-      - DB_USER: $DB_USER  # Assign values from the app inputs
-      - DB_PASS: $DB_PASS
-      - DB_NAME: $DB_NAME
-  # One instance of java-spring-website
-  # (see: applications/java-spring-website/java-spring-website.yaml)
-- java-spring-website:
-    target: all-in-one
-    input_values:
-      - DB_USER: $DB_USER
-      - DB_PASS: $DB_PASS
-      - DB_NAME: $DB_NAME
-    # The website depends on MySQL and will start deploying only when
-    # the database is ready
-    depends_on:
-      - mysql
+    - BUILD_NUM: $BUILD_NUM
 
 artifacts:
+- nectar-web: 'artifacts/nectar/nectar-web.py'
 - nectar-api: 'artifacts/nectar/nectar-api.py'
 
-infrastructure:
-  connectivity:
-    green_host: green.pm.com
-    virtual_network:
-      id: infra_rg/prod_vnet
-      subnets:
-        gateway:
-        - ag_subnet
-        management:
-        - mng_subnet
-        application:
-        - app_subnet
+inputs:
+- BUILD_NUM
+- NETWORK_ID
+- CERT_ID
 
 ingress:
   listeners:
-    - http: 80
+    - https: 443
+      certificate: $CERT_ID
       rules:
       # Green rules:
       # Note that every green rule should contain 'host: green.asaf.com' property
@@ -89,6 +53,18 @@ ingress:
         color: blue
         shortcut: sometest.com
 
+infrastructure:
+  connectivity:
+    green_host: green.test.com
+    virtual_network:
+       id: $NETWORK_ID
+       subnets:
+         gateway:
+          - ag_subnet
+         management: 
+          - mng_subnet
+         application: 
+           - app_subnet
+
 debugging:
-  # bastion_availability: enabled-on
-  direct_access: on 
+  bastion_availability: enabled-on
