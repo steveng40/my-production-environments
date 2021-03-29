@@ -73,7 +73,7 @@ ingress:
         application: nectar-api
         port: 3001
         color: green
-        shortcut: ${COLONY.PublicAddress}/api/index
+        shortcut: ${COLONY.PublicAddress}/api/index/green
       - default: true
         application: java-spring-website
         port: 8080
